@@ -8,6 +8,7 @@
   width: 640px;
   height: 640px;
   margin: auto;
+  border: 1px solid black;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -32,5 +33,5 @@ p {
 }
 
 .box {
-  border: 1px solid black;
+  opacity: 0;
 }

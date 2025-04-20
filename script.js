@@ -13,8 +13,34 @@ function randonNumber() {
 
 //generate random colors
 function colorChange(event) {
-  event.target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
-  event.target.style.opacity = 1;
+  //option to stop chaning colors once opacity reaches 1
+  // if (Number(event.target.style.opacity) === 1) {
+  //   event.target.removeEventListener("mouseover", colorchange);
+  // } else {
+  //   event.target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
+  // }
+
+  //option to change box to black once opacity reaches 1
+  if (Number(event.target.style.opacity) === 1) {
+    event.target.style.backgroundColor = "#067e1c";
+    event.target.removeEventListener("mouseover", colorchange);
+  } else {
+    event.target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
+  }
+
+  //option to keep changing colors endlessly
+  // event.target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
+}
+
+//change opacity
+function boxOpacity(event) {
+  let boxOpacity = event.target.style.opacity;
+  if (boxOpacity < 1) {
+    event.target.style.opacity = Number(boxOpacity) + 0.2;
+  } else {
+    event.target.style.opacity = 1;
+  }
+  console.log(boxOpacity);
 }
 
 //create boxes
@@ -25,12 +51,12 @@ function createBoxes(choice) {
   let gridSize = choice * choice;
   for (let i = 0; i < gridSize; i++) {
     let createBox = document.createElement("div");
-    let boxWidth = containerWidth / choice - 2 + "px";
+    let boxWidth = containerWidth / choice + "px";
     createBox.setAttribute("class", "box");
     createBox.style.width = boxWidth;
     createBox.style.height = boxWidth;
-    createBox.style.opacity = 0;
     createBox.addEventListener("mouseover", colorChange);
+    createBox.addEventListener("mouseover", boxOpacity);
     container.appendChild(createBox);
   }
 }
