@@ -9,10 +9,6 @@ const containerHeight = parseInt(containerStyle.getPropertyValue("height"));
 const boxWidth = containerWidth / 16 - 2 + "px";
 const grid = 32 * 32;
 
-console.log(containerHeight);
-console.log(containerWidth);
-console.log(boxWidth);
-
 //create 1 box
 function createBoxes() {
   for (let i = 0; i < 16; i++) {
@@ -30,6 +26,11 @@ createBoxes();
 //create hover function that changes colors of boxes with mouseenter and mouseleave (or mouseover and mouseout? research this)
 
 //create prompt to ask for number of squares per side of grid (max 100)
+btn.addEventListener("click", getGridSize);
+function getGridSize() {
+  let gridChoice = prompt("Choose a number for the sides of the grid.");
+  console.log(gridChoice);
+}
 
 //calculate new grid based on user response
 
