@@ -20,7 +20,7 @@ function colorChange(event) {
   //   event.target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
   // }
 
-  //option to change box to black once opacity reaches 1
+  //option to change box to a different color once opacity reaches 1
   if (Number(event.target.style.opacity) === 1) {
     event.target.style.backgroundColor = "#067e1c";
     event.target.removeEventListener("mouseover", colorchange);
