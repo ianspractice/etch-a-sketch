@@ -14,6 +14,7 @@ function randonNumber() {
 //generate random colors
 function colorChange(event) {
   event.target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
+  event.target.style.opacity = 1;
 }
 
 //create boxes
@@ -28,6 +29,7 @@ function createBoxes(choice) {
     createBox.setAttribute("class", "box");
     createBox.style.width = boxWidth;
     createBox.style.height = boxWidth;
+    createBox.style.opacity = 0;
     createBox.addEventListener("mouseover", colorChange);
     container.appendChild(createBox);
   }
