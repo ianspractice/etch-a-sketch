@@ -6,9 +6,48 @@ const containerStyle = window.getComputedStyle(container);
 const containerWidth = parseInt(containerStyle.getPropertyValue("width"));
 const containerHeight = parseInt(containerStyle.getPropertyValue("height"));
 
+//hold letters
+const letters = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+
 //generate a random number between 0-255
-function randonNumber() {
+function randomNumber() {
   return Math.floor(Math.random() * 256);
+}
+
+//generate number between 0-25
+function randomLetter() {
+  return Math.floor(Math.random() * 26);
+}
+
+function createText(event) {
+  event.target.textContent = `${letters[randomLetter()]}`;
 }
 
 //generate random colors
@@ -17,7 +56,7 @@ function colorChange(event) {
   // if (Number(event.target.style.opacity) === 1) {
   //   event.target.removeEventListener("mouseover", colorchange);
   // } else {
-  //   event.target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
+  //   event.target.style.backgroundColor = `rgb(${randomNumber()},${randomNumber()},${randomNumber()})`;
   // }
 
   //option to change box to a different color once opacity reaches 1
@@ -25,11 +64,11 @@ function colorChange(event) {
     event.target.style.backgroundColor = "#067e1c";
     event.target.removeEventListener("mouseover", colorchange);
   } else {
-    event.target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
+    event.target.style.backgroundColor = `rgb(${randomNumber()},${randomNumber()},${randomNumber()})`;
   }
 
   //option to keep changing colors endlessly
-  // event.target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
+  // event.target.style.backgroundColor = `rgb(${randomNumber()},${randomNumber()},${randomNumber()})`;
 }
 
 //change opacity
@@ -52,11 +91,16 @@ function createBoxes(choice) {
   for (let i = 0; i < gridSize; i++) {
     let createBox = document.createElement("div");
     let boxWidth = containerWidth / choice + "px";
+    let textSize = containerWidth / choice;
     createBox.setAttribute("class", "box");
     createBox.style.width = boxWidth;
     createBox.style.height = boxWidth;
+    createBox.style.textAlign = "center";
+    createBox.style.alignContent = "center";
+    createBox.style.fontSize = textSize * 0.8 + "px";
     createBox.addEventListener("mouseover", colorChange);
     createBox.addEventListener("mouseover", boxOpacity);
+    createBox.addEventListener("mouseover", createText);
     container.appendChild(createBox);
   }
 }
@@ -82,7 +126,7 @@ createBoxes(16);
 // container.addEventListener("mouseover", (event) => {
 //   container.style.backgroundColor = "";
 //   let target = event.target;
-//   target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
+//   target.style.backgroundColor = `rgb(${randomNumber()},${randomNumber()},${randomNumber()})`;
 // });
 
 //remove color on parent div

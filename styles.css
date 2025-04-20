@@ -4,7 +4,8 @@
   padding: 0;
 }
 
-#container {
+#container,
+#container2 {
   width: 640px;
   height: 640px;
   margin: auto;
