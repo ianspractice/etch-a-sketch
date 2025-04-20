@@ -6,8 +6,15 @@ const containerStyle = window.getComputedStyle(container);
 const containerWidth = parseInt(containerStyle.getPropertyValue("width"));
 const containerHeight = parseInt(containerStyle.getPropertyValue("height"));
 
-//create initial grid
-createBoxes(16);
+//generate a random number between 0-255
+function randonNumber() {
+  return Math.floor(Math.random() * 256);
+}
+
+//generate random colors
+function colorChange(event) {
+  event.target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
+}
 
 //create boxes
 function createBoxes(choice) {
@@ -15,14 +22,13 @@ function createBoxes(choice) {
   container.textContent = "";
   //create new grid
   let gridSize = choice * choice;
-  //reset background
-  container.style.backgroundColor = "";
   for (let i = 0; i < gridSize; i++) {
     let createBox = document.createElement("div");
     let boxWidth = containerWidth / choice - 2 + "px";
     createBox.setAttribute("class", "box");
     createBox.style.width = boxWidth;
     createBox.style.height = boxWidth;
+    createBox.addEventListener("mouseover", colorChange);
     container.appendChild(createBox);
   }
 }
@@ -38,20 +44,18 @@ function getGridSize() {
   createBoxes(gridChoice);
 }
 
+//create initial grid
+createBoxes(16);
+
+//below functions didn't work as the entire grid would change to one color when hovering just over the parent border
 //create hover function that changes colors of boxes with mouseover/mouseout on parent div
-container.addEventListener("mouseover", (event) => {
-  container.style.backgroundColor = "";
-  let target = event.target;
-  target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
-});
+// container.addEventListener("mouseover", (event) => {
+//   container.style.backgroundColor = "";
+//   let target = event.target;
+//   target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
+// });
 
-container.addEventListener("mouseout", (event) => {
-  container.style.backgroundColor = "";
-});
-
-//generate a random number between 0-255
-function randonNumber() {
-  return Math.floor(Math.random() * 256);
-}
-
-//I'm playing with a branch
+//remove color on parent div
+// container.addEventListener("mouseout", () => {
+//   container.style.backgroundColor = "";
+// });
