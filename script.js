@@ -39,10 +39,15 @@ function getGridSize() {
 //create hover function that changes colors of boxes with mouseover/mouseout on parent div
 container.addEventListener("mouseover", (event) => {
   let target = event.target;
-  target.style.background = "pink";
+  target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
 });
 
 container.addEventListener("mouseout", (event) => {
   let target = event.target;
   target.style.background = "";
 });
+
+//generate a random number between 0-255
+function randonNumber() {
+  return Math.floor(Math.random() * 256);
+}
