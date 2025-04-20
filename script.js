@@ -1,22 +1,25 @@
 //.box width/height = (contatiner.width / number of boxes desired) - 2px; the 2px accounts for the borders
 
 const container = document.querySelector("#container");
-
+const btn = document.querySelector("button");
 const containerStyle = window.getComputedStyle(container);
+const containerWidth = parseInt(containerStyle.getPropertyValue("width"));
+const containerHeight = parseInt(containerStyle.getPropertyValue("height"));
 
-const containerWidth = containerStyle.getPropertyValue("width");
-
-console.log(containerWidth);
-
+const boxWidth = containerWidth / 16 - 2 + "px";
 const grid = 32 * 32;
+
+console.log(containerHeight);
+console.log(containerWidth);
+console.log(boxWidth);
 
 //create 1 box
 function createBoxes() {
-  for (let i = 0; i < grid; i++) {
+  for (let i = 0; i < 16; i++) {
     let createBox = document.createElement("div");
     createBox.setAttribute("class", "box");
-    createBox.style.width = "38px";
-    createBox.style.height = "38px";
+    createBox.style.width = boxWidth;
+    createBox.style.height = boxWidth;
     container.appendChild(createBox);
   }
 }
