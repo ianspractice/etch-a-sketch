@@ -7,7 +7,6 @@
 #container {
   width: 640px;
   height: 640px;
-  border: 1px solid black;
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -17,8 +16,21 @@
   align-content: center;
 }
 
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 3px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgba(188, 244, 176, 0.305);
+  font-weight: bold;
+}
+
+p {
+  text-align: center;
+  font-size: large;
+}
+
 .box {
   border: 1px solid black;
-  width: 38px;
-  height: 38px;
 }

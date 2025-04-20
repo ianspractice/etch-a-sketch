@@ -15,6 +15,8 @@ function createBoxes(choice) {
   container.textContent = "";
   //create new grid
   let gridSize = choice * choice;
+  //reset background
+  container.style.backgroundColor = "";
   for (let i = 0; i < gridSize; i++) {
     let createBox = document.createElement("div");
     let boxWidth = containerWidth / choice - 2 + "px";
@@ -38,13 +40,13 @@ function getGridSize() {
 
 //create hover function that changes colors of boxes with mouseover/mouseout on parent div
 container.addEventListener("mouseover", (event) => {
+  container.style.backgroundColor = "";
   let target = event.target;
   target.style.backgroundColor = `rgb(${randonNumber()},${randonNumber()},${randonNumber()})`;
 });
 
 container.addEventListener("mouseout", (event) => {
-  let target = event.target;
-  target.style.background = "";
+  container.style.backgroundColor = "";
 });
 
 //generate a random number between 0-255
