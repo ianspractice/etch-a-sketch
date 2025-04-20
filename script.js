@@ -46,6 +46,14 @@ function randomLetter() {
   return Math.floor(Math.random() * 26);
 }
 
+function createTextOnce(event) {
+  if (event.target.textContent !== "") {
+    event.target.removeEventListener("mouseover", createText);
+  } else {
+    event.target.textContent = `${letters[randomLetter()]}`;
+  }
+}
+
 function createText(event) {
   event.target.textContent = `${letters[randomLetter()]}`;
 }
@@ -62,7 +70,7 @@ function colorChange(event) {
   //option to change box to a different color once opacity reaches 1
   if (Number(event.target.style.opacity) === 1) {
     event.target.style.backgroundColor = "#067e1c";
-    event.target.removeEventListener("mouseover", colorchange);
+    event.target.removeEventListener("mouseover", colorChange);
   } else {
     event.target.style.backgroundColor = `rgb(${randomNumber()},${randomNumber()},${randomNumber()})`;
   }
@@ -79,7 +87,6 @@ function boxOpacity(event) {
   } else {
     event.target.style.opacity = 1;
   }
-  console.log(boxOpacity);
 }
 
 //create boxes
@@ -100,7 +107,8 @@ function createBoxes(choice) {
     createBox.style.fontSize = textSize * 0.8 + "px";
     createBox.addEventListener("mouseover", colorChange);
     createBox.addEventListener("mouseover", boxOpacity);
-    createBox.addEventListener("mouseover", createText);
+    createBox.addEventListener("mouseover", createTextOnce);
+    createBox.addEventListener("click", createText);
     container.appendChild(createBox);
   }
 }
