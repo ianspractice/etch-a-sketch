@@ -21,7 +21,7 @@ function createBoxes(choice) {
     createBox.setAttribute("class", "box");
     createBox.style.width = boxWidth;
     createBox.style.height = boxWidth;
-    container.append(createBox);
+    container.appendChild(createBox);
   }
 }
 
@@ -36,4 +36,13 @@ function getGridSize() {
   createBoxes(gridChoice);
 }
 
-//create hover function that changes colors of boxes with mouseenter and mouseleave (or mouseover and mouseout? research this)
+//create hover function that changes colors of boxes with mouseover/mouseout on parent div
+container.addEventListener("mouseover", (event) => {
+  let target = event.target;
+  target.style.background = "pink";
+});
+
+container.addEventListener("mouseout", (event) => {
+  let target = event.target;
+  target.style.background = "";
+});
