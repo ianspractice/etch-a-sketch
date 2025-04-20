@@ -2,21 +2,27 @@
 
 const container = document.querySelector("#container");
 
-const grid = 16 * 16;
+const containerStyle = window.getComputedStyle(container);
+
+const containerWidth = containerStyle.getPropertyValue("width");
+
+console.log(containerWidth);
+
+const grid = 32 * 32;
 
 //create 1 box
 function createBoxes() {
   for (let i = 0; i < grid; i++) {
     let createBox = document.createElement("div");
     createBox.setAttribute("class", "box");
+    createBox.style.width = "38px";
+    createBox.style.height = "38px";
     container.appendChild(createBox);
-    console.log(createBox);
   }
 }
 
-createBoxes();
-
 //add boxes to container
+createBoxes();
 
 //create hover function that changes colors of boxes with mouseenter and mouseleave (or mouseover and mouseout? research this)
 
