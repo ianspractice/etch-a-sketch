@@ -1,6 +1,12 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
 #container {
-  width: 600px;
-  height: 600px;
+  width: 640px;
+  height: 640px;
   border: 1px solid black;
   margin: auto;
   display: flex;
@@ -13,4 +19,6 @@
 
 .box {
   border: 1px solid black;
+  width: 38px;
+  height: 38px;
 }
