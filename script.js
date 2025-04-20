@@ -64,7 +64,9 @@ function createBoxes(choice) {
 //create prompt to ask for number of squares per side of grid (max 100); add boxes to container
 btn.addEventListener("click", getGridSize);
 function getGridSize() {
-  let gridChoice = prompt("Choose a number for the sides of the grid.");
+  let gridChoice = prompt(
+    "Choose a number of boxes for the sides of the grid."
+  );
   if (isNaN(gridChoice) || gridChoice > 100 || gridChoice < 1) {
     alert("Please choose a number between 1 and 100.");
     return;
