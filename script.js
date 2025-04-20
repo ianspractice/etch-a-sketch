@@ -29,6 +29,9 @@ createBoxes();
 btn.addEventListener("click", getGridSize);
 function getGridSize() {
   let gridChoice = prompt("Choose a number for the sides of the grid.");
+  if (isNaN(gridChoice)) {
+    alert("Please choose a number less than 100.");
+  }
   console.log(gridChoice);
 }
 
