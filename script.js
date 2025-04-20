@@ -29,10 +29,9 @@ createBoxes();
 btn.addEventListener("click", getGridSize);
 function getGridSize() {
   let gridChoice = prompt("Choose a number for the sides of the grid.");
-  if (isNaN(gridChoice)) {
+  if (isNaN(gridChoice) || gridChoice > 100) {
     alert("Please choose a number less than 100.");
   }
-  console.log(gridChoice);
 }
 
 //calculate new grid based on user response
