@@ -2,12 +2,14 @@
 
 const container = document.querySelector("#container");
 
-const createBox = document.createElement("div");
-
 //create 1 box
 function createBoxes() {
-  createBox.setAttribute("class", "box");
-  container.appendChild(createBox);
+  for (let i = 0; i < 16; i++) {
+    let createBox = document.createElement("div");
+    createBox.setAttribute("class", "box");
+    container.append(createBox);
+    console.log(createBox);
+  }
 }
 
 createBoxes();
